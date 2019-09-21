@@ -6,3 +6,4 @@ MarkupSafe==1.0
 Werkzeug==0.14.1
 chatterbot>=1.0.0
 chatterbot-corpus>=1.2.0
+WTForms==2.2.1
