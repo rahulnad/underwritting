@@ -1,55 +1,30 @@
 {% extends "layout.html" %}
 {% block content %}
+
     <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Enter your information for a Quote</legend>
-                <div class="form-group">
-                    {{ form.age.label(class="form-control-label") }}
+           
 
-                    {% if form.age.errors %}
-                        {{ form.age(class="form-control form-control-lg is-invalid") }}
+               <!--FirstName -->
+                <div class="form-group">
+                    {{ form.firstname.label(class="form-control-label") }}
+
+                    {% if form.firstname.errors %}
+                        {{ form.firstname(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
-                            {% for error in form.age.errors %}
+                            {% for error in form.firstname.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.age(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-                
-                <div class="form-group">
-                    {{ form.VehicleValue.label(class="form-control-label") }}
-
-                    {% if form.VehicleValue.errors %}
-                        {{ form.VehicleValue(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.VehicleValue.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.VehicleValue(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-                
-                <div class="form-group">
-                    {{ form.middlename.label(class="form-control-label") }}
-
-                    {% if form.middlename.errors %}
-                        {{ form.middlename(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.middlename.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.middlename(class="form-control form-control-lg") }}
+                        {{ form.firstname(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
 
+                <!--LastName -->
                 <div class="form-group">
                     {{ form.lastname.label(class="form-control-label") }}
 
@@ -64,6 +39,9 @@
                         {{ form.lastname(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
+
+
+                 <!--email -->
                 <div class="form-group">
                     {{ form.email.label(class="form-control-label") }}
                     {% if form.email.errors %}
@@ -78,35 +56,164 @@
                     {% endif %}
                 </div>
 
+                <!--dob-->
                 <div class="form-group">
-                    {{ form.dateofbirth.label(class="form-control-label") }}
-                    {% if form.dateofbirth.errors %}
-                        {{ form.dateofbirth(class="form-control form-control-lg is-invalid") }}
+                    {{ form.dob.label(class="form-control-label") }}
+
+                    {% if form.dob.errors %}
+                        {{ form.dob(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
-                            {% for error in form.dateofbirth.errors %}
+                            {% for error in form.dob.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.dateofbirth(class="form-control form-control-lg") }}
+                        {{ form.dob(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
 
+                <!--Marital Status -->
 
                 <div class="form-group">
-                    {{ form.policyexpirationdate.label(class="form-control-label") }}
-                    {% if form.policyexpirationdate.errors %}
-                        {{ form.policyexpirationdate(class="form-control form-control-lg is-invalid") }}
+                    {{ form.maritalstatus.label(class="form-control-label") }}
+
+                    {% if form.maritalstatus.errors %}
+                        {{ form.maritalstatus(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
-                            {% for error in form.policyexpirationdate.errors %}
+                            {% for error in form.maritalstatus.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.policyexpirationdate(class="form-control form-control-lg") }}
+                        {{ form.maritalstatus(style="list-style:none",class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
+
+                  <!--Zip Code -->
+
+                  <div class="form-group">
+                    {{ form.zipcode.label(class="form-control-label") }}
+
+                    {% if form.zipcode.errors %}
+                        {{ form.zipcode(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.zipcode.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.zipcode(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                   <!--Make -->
+
+                   <div class="form-group">
+                    {{ form.make.label(class="form-control-label") }}
+
+                    {% if form.make.errors %}
+                        {{ form.make(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.make.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.make(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+                   <!--Milegae -->
+
+                   <div class="form-group">
+                    {{ form.mileage.label(class="form-control-label") }}
+
+                    {% if form.mileage.errors %}
+                        {{ form.mileage(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.mileage.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.mileage(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+                        <!--Commute -->
+
+                        <div class="form-group">
+                            {{ form.commute.label(class="form-control-label") }}
+        
+                            {% if form.commute.errors %}
+                                {{ form.commute(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.commute.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.commute(style="list-style:none",class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+
+
+                     <!--Storage -->   
+                <div class="form-group">
+                    {{ form.storage.label(class="form-control-label") }}
+
+                    {% if form.storage.errors %}
+                        {{ form.storage(style="list-style:none",class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.storage.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.storage(style="list-style:none",class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+
+
+                <!--Driving History -->   
+                <div class="form-group">
+                    {{ form.drivinghistory.label(class="form-control-label") }}
+
+                    {% if form.drivinghistory.errors %}
+                        {{ form.drivinghistory(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.drivinghistory.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.drivinghistory(style="list-style:none",class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <!--Accident History -->   
+                <div class="form-group">
+                    {{ form.accidenthistory.label(class="form-control-label") }}
+
+                    {% if form.accidenthistory.errors %}
+                        {{ form.accidenthistory(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.accidenthistory.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.accidenthistory(style="list-style:none",class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
                 
+    
+                <!--Current Auto Carrier --> 
                 <div class="form-group">
                     {{ form.currentautocarrier.label(class="form-control-label") }}
                     {% if form.currentautocarrier.errors %}
