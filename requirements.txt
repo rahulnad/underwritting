@@ -7,3 +7,4 @@ Werkzeug==0.14.1
 chatterbot>=1.0.0
 chatterbot-corpus>=1.2.0
 WTForms==2.2.1
+flask_wtf==0.14.2
