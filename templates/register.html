@@ -72,22 +72,6 @@
                     {% endif %}
                 </div>
 
-                <!--Marital Status -->
-
-                <div class="form-group">
-                    {{ form.maritalstatus.label(class="form-control-label") }}
-
-                    {% if form.maritalstatus.errors %}
-                        {{ form.maritalstatus(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.maritalstatus.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.maritalstatus(style="list-style:none",class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
 
                   <!--Zip Code -->
 
@@ -106,6 +90,23 @@
                     {% endif %}
                 </div>
 
+                 <!--Brand -->
+
+                <div class="form-group">
+                {{ form.brand.label(class="form-control-label") }}
+
+                {% if form.brand.errors %}
+                    {{ form.brand(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.brand.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.brand(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
                    <!--Make -->
 
                    <div class="form-group">
@@ -120,6 +121,25 @@
                         </div>
                     {% else %}
                         {{ form.make(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+                
+                   <!--Year of Car -->
+
+                   <div class="form-group">
+                    {{ form.yearofcar.label(class="form-control-label") }}
+
+                    {% if form.yearofcar.errors %}
+                        {{ form.yearofcar(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.yearofcar.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.yearofcar(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
 
