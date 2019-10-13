@@ -11,9 +11,9 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
     {% if title %}
-        <title>Get your Quote{{ title }}</title>
+        <title>Hackathon{{ title }}</title>
     {% else %}
-        <title>Get your Quote</title>
+        <title>Hackathon</title>
     {% endif %}
 </head>
 <body>
@@ -26,7 +26,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{{ url_for('about') }}"> About American Modern</a>
+              <a class="nav-item nav-link" href="{{ url_for('about') }}"> About</a>
               <a class="nav-item nav-link" href="{{ url_for('register') }}">Quote Estimator</a>
             </div>
             <!-- Navbar Right Side -->

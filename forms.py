@@ -12,13 +12,15 @@ class registrationform(FlaskForm):
 
   email = StringField('Email',validators = [DataRequired(),Email()])
 
-  dob = DateField('Dateofbirth',format='%Y-%m-%d',render_kw={"placeholder": "yyyy-mm-dd"})
-
-  maritalstatus = RadioField('Marital Status',choices=[('yes','Married'),('no','Single')])
+  dob = DateField('Date of birth',format='%Y-%m-%d',render_kw={"placeholder": "yyyy-mm-dd"})
   
   zipcode = StringField('Zip code',validators = [DataRequired(), Length(min = 1, max = 8)])
 
-  make = StringField('Make',validators = [DataRequired(), Length(min = 1, max = 8)])
+  brand = StringField('Brand',validators = [DataRequired(), Length(min = 1, max = 50)])
+
+  make = StringField('Make',validators = [DataRequired(), Length(min = 1, max = 50)])
+
+  yearofcar = DateField('Year of car',format='%Y',render_kw={"placeholder": "yyyy"})
 
   mileage = StringField('Mileage',validators = [DataRequired(), Length(min = 1, max = 6)])
 

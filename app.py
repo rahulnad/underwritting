@@ -12,11 +12,9 @@ def about():
     return render_template('about.html', title='About')
 
 
-@app.route("/result/<first_name>/<last_name>/<email>/<dob>/<maritalstatus>/<zipcode>/<make>/<mileage>/<commute>/<storage>/<drivinghistory>/<accidenthistory>/<cac>",methods=['GET', 'POST'])
-def result(first_name,last_name,email,dob,maritalstatus,zipcode,make,mileage,commute,storage,drivinghistory,accidenthistory,cac):
+@app.route("/result/<first_name>/<last_name>/<email>/<dob>/<zipcode>/<make>/<brand>/<yearofcar>/<mileage>/<commute>/<storage>/<drivinghistory>/<accidenthistory>/<cac>",methods=['GET', 'POST'])
+def result(first_name,last_name,email,dob,zipcode,make,brand,yearofcar,mileage,commute,storage,drivinghistory,accidenthistory,cac):
     base_premium = 450
-    is_single = 0.10
-    is_married =0.03
     is_accident =0.70
     is_amod = 0.10
     is_oneyear = 0.40
@@ -30,19 +28,20 @@ def result(first_name,last_name,email,dob,maritalstatus,zipcode,make,mileage,com
     print(delta_years)
 
     msg = ""
-    if commute == 'yes' or storage == 'no':
+    if commute == 'yes' or storage == 'no' or brand not in ('Buick','Dodge','Ford','Honda','Mitsubishi','Nissan','Pontiac','Saturn','Volkswagen') \
+       or make not in ('Regatta','Ram SRT10','Lightning','S2000','3000GT','350Z','G8','Sky','Cabriolet'):
         msg = "Your application is not approved"
-    elif  maritalstatus == 'no' or accidenthistory == 'no' or cac in ['American Modern','american modern','AMOD''amod','AMERICAN MODERN','amig']:
-        calculated_base_premium = (base_premium + (base_premium*is_single))  - (base_premium*is_amod)
+    elif accidenthistory == 'no' or cac in ['American Modern','american modern','AMOD''amod','AMERICAN MODERN','amig']:
+        calculated_base_premium = base_premium - base_premium*is_amod
         msg = "Your application is approved and your quote is :"+str(drivinghistorycaluclation(delta_years, calculated_base_premium))
-    elif  maritalstatus == 'no' or accidenthistory == 'yes' or cac in ['American Modern','american modern','AMOD''amod','AMERICAN MODERN','amig']:
-        calculated_base_premium = base_premium + (base_premium)*is_single + (base_premium)*is_accident - (base_premium)*is_amod
+    elif  accidenthistory == 'yes' or cac in ['American Modern','american modern','AMOD''amod','AMERICAN MODERN','amig']:
+        calculated_base_premium = base_premium + (base_premium)*is_accident - (base_premium)*is_amod
         msg = "Your application is approved and your quote is :"+str(drivinghistorycaluclation(delta_years, calculated_base_premium))
-    elif  maritalstatus == 'yes' or cac in ['American Modern','american modern','AMOD''amod','AMERICAN MODERN','amig']:
-        calculated_base_premium = base_premium + (base_premium)*is_married - (base_premium)*is_amod
+    elif  cac in ['American Modern','american modern','AMOD''amod','AMERICAN MODERN','amig']:
+        calculated_base_premium = base_premium - (base_premium)*is_amod
         msg = "Your application is approved and your quote is :"+str(drivinghistorycaluclation(delta_years, calculated_base_premium))
-    elif  maritalstatus == 'yes' or accidenthistory == 'yes' or cac in ['American Modern','american modern','AMOD''amod','AMERICAN MODERN','amig']:
-        calculated_base_premium = base_premium + (base_premium)*is_married + (base_premium)*is_accident - (base_premium)*is_amod
+    elif  accidenthistory == 'yes' or cac in ['American Modern','american modern','AMOD''amod','AMERICAN MODERN','amig']:
+        calculated_base_premium = base_premium + (base_premium)*is_accident - (base_premium)*is_amod
         msg = "Your application is approved and your quote is :"+str(drivinghistorycaluclation(delta_years, calculated_base_premium))
     else:
         msg = "We are unable to process your application. Please contact your local agent"
@@ -69,48 +68,35 @@ def register():
     if form.validate_on_submit():
   
         input_first_name = request.form.get('firstname')
-        print("firstname",input_first_name)
-
-
+    
         input_last_name = request.form.get('lastname')
-        print("lastname",input_last_name)
-
+    
         input_email = request.form.get('email')
-        print("email",input_email)
-
+  
         input_dob = request.form.get('dob')
-        print("dob",input_dob)
-        print(type(input_dob)) 
-
-        input_marital_status = request.form.get('maritalstatus')
-        print("Marital Status",input_marital_status)
-
+    
         input_zip_code = request.form.get('zipcode')
-        print("zip code",input_zip_code)
-
+      
         input_make = request.form.get('make')
-        print("make",input_make)
+
+        input_brand = request.form.get('brand')
+
+        input_yearofcar = request.form.get('yearofcar')
 
         input_mileage = request.form.get('mileage')
-        print("mileage",input_mileage)
-
+     
         input_commute = request.form.get('commute')
-        print("commute",input_commute)
-
+    
         input_storage = request.form.get('storage')
-        print("age",input_storage)
 
         input_dh = request.form.get('drivinghistory')
-        print("driving history",input_dh)
-
+    
         input_ah = request.form.get('accidenthistory')
-        print("accidenthistory",input_ah)
 
         input_ac = request.form.get('currentautocarrier')
-        print("currentautocarrier",input_ac)
    
-        return redirect(url_for('result',first_name=input_first_name,last_name=input_last_name,email=input_email,dob=input_dob,maritalstatus=input_marital_status,zipcode=input_zip_code,make=input_make,mileage=input_mileage,commute=input_commute,storage=input_storage,drivinghistory=input_dh,accidenthistory=input_ah,cac=input_ac))
+        return redirect(url_for('result',first_name=input_first_name,last_name=input_last_name,email=input_email,dob=input_dob,zipcode=input_zip_code,make=input_make,brand=input_brand,yearofcar = input_yearofcar,mileage=input_mileage,commute=input_commute,storage=input_storage,drivinghistory=input_dh,accidenthistory=input_ah,cac=input_ac))
     return render_template('register.html', title='Register', form=form)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=5000,debug=True)
+    app.run(debug=True)
