@@ -1,2 +1,2 @@
 # underwritting-automation
-American Modern - Sogeti Hackathon 2019
+Sogeti Hackathon 2019. Worked on automating the underwriting process for an insurance company 
